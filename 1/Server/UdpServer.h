@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Server.h"
+#include "NtpService.h"
 
 #define forever for (;;)
 
@@ -19,4 +20,7 @@ protected:
 private:
 	sockaddr readStruct(GETSINCHRO* sync) const;
 	void writeStruct(const SETSINCHRO& sync, const sockaddr& to) const;
+
+private:
+	NtpService m_ntpService;
 };

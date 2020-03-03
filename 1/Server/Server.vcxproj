@@ -156,11 +156,13 @@
   <ItemGroup>
     <ClCompile Include="Constants.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="NtpService.cpp" />
     <ClCompile Include="Server.cpp" />
     <ClCompile Include="UdpServer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Constants.h" />
+    <ClInclude Include="NtpService.h" />
     <ClInclude Include="Server.h" />
     <ClInclude Include="UdpServer.h" />
   </ItemGroup>

@@ -7,7 +7,7 @@
 #include "DgramStructs.h"
 #include "WinsockWrappers.h"
 
-UdpServer::UdpServer(unsigned short port) : Server(port)
+UdpServer::UdpServer(unsigned short port) : Server(port), m_ntpService(10000, "88.147.254.232")
 {
 }
 

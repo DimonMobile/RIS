@@ -24,6 +24,9 @@
     <ClInclude Include="UdpServer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="NtpService.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -36,6 +39,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="UdpServer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NtpService.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
