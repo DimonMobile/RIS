@@ -1,7 +1,6 @@
 #include "NtpService.h"
 
 #include <WinSock2.h>
-#include <iostream>
 #include <thread>
 
 #include "WinsockWrappers.h"
@@ -55,7 +54,6 @@ void NtpService::syncTime()
 		m_timeAccessMutex.lock();
 		m_currentTime = ntohl(package.TransmitTimestamp[0]) - 613608u * 3600;
 		m_timeAccessMutex.unlock();
-		std::cout << "Another thread: " << m_currentTime << std::endl;
 
 		Sleep(m_interval);
 	}

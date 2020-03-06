@@ -13,6 +13,10 @@ UdpServer::UdpServer(unsigned short port) : Server(port), m_ntpService(10000, "8
 
 void UdpServer::UdpServer::startLoop()
 {
+	std::cout << "Requesting time from global server...";
+	while (m_ntpService.getTime() == 0) {}
+	std::cout << "OK" << std::endl;
+
 	int requestId = 0;
 	int correctionSum = 0;
 
