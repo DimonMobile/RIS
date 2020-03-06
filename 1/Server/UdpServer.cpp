@@ -22,6 +22,7 @@ void UdpServer::UdpServer::startLoop()
 
 	int minCorrection = (std::numeric_limits<int>::max)();
 	int maxCorrection = (std::numeric_limits<int>::min)();
+
 	forever
 	{
 		GETSINCHRO getStruct;
@@ -31,7 +32,7 @@ void UdpServer::UdpServer::startLoop()
 		{
 			SETSINCHRO setStruct;
 			memcpy(setStruct.cmd, "SINC", 4);
-			setStruct.correction = clock() - getStruct.curvalue;
+			setStruct.correction = m_ntpService.evaluateTime() - getStruct.curvalue;
 
 			if (setStruct.correction > maxCorrection)
 				maxCorrection = setStruct.correction;

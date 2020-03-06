@@ -29,6 +29,7 @@ void UdpClient::loop()
 	addr.sin_port = htons(m_port);
 	addr.sin_addr = Utils::strToAddr("127.0.0.1");
 
+	m_currentValue = time(nullptr);
 	forever
 	{
 		Sleep(m_interval);

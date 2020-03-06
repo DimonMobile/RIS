@@ -18,6 +18,12 @@ unsigned long NtpService::getTime()
 	return m_currentTime;
 }
 
+unsigned long NtpService::evaluateTime()
+{
+	std::lock_guard<std::mutex> guard(m_timeAccessMutex);
+	return static_cast<unsigned long>((clock() / (CLOCKS_PER_SEC / 1000.0) - m_lastTimeGot) + m_currentTime);
+}
+
 void NtpService::stop()
 {
 	m_working = false;
@@ -53,6 +59,7 @@ void NtpService::syncTime()
 
 		m_timeAccessMutex.lock();
 		m_currentTime = ntohl(package.TransmitTimestamp[0]) - 613608u * 3600;
+		m_lastTimeGot = clock() / (CLOCKS_PER_SEC / 1000.0);
 		m_timeAccessMutex.unlock();
 
 		Sleep(m_interval);
