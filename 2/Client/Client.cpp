@@ -1,6 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <WinSock2.h>
+#include <ctime>
+#include <string>
 
 int main()
 {
@@ -29,9 +31,19 @@ int main()
         std::cout << "Recieved trash" << std::endl;
     Sleep(200);
 
-    std::ofstream stream("output.txt", std::ios_base::app);
-    stream << "One more line of text, yeah" << std::endl;
-    stream.close();
+    if (rand() % 2 == 0)
+    {
+        std::ofstream stream("output.txt", std::ios_base::app);
+        stream << "One more line of text, yeah" << std::endl;
+    }
+    else
+    {
+        std::ifstream stream("output.txt");
+        std::string line;
+        while (std::getline(stream, line))
+            std::cout << line << std::endl;
+    }
+    system("pause");
 
     const char* leaveData = "leave";
     sendto(sock, leaveData, strlen(leaveData) + 1, 0, (sockaddr*)&addr, sizeof(addr));
